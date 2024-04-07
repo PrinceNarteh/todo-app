@@ -23,6 +23,16 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  // create a new Task
+  void createNewTask() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
             onChanged: (value) => checkBoxChanged(value, index),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: createNewTask,
+        child: const Icon(Icons.add),
       ),
     );
   }
