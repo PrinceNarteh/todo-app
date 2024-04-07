@@ -27,12 +27,24 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void onSave() {
+    setState(() {
+      todoList.add(ToDo(taskName: _controller.text, taskCompleted: false));
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
   // create a new Task
   void createNewTask() {
     showDialog(
       context: context,
       builder: (context) {
-        return DialogBox(controller: _controller);
+        return DialogBox(
+          controller: _controller,
+          onCancel: () => Navigator.of(context).pop(),
+          onSave: onSave,
+        );
       },
     );
   }
