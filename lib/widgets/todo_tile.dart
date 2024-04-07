@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class ToDoTile extends StatelessWidget {
   final String taskName;
   final bool taskCompleted;
-  Function(bool?)? onChanged;
+  final Function(bool?)? onChanged;
 
-  ToDoTile({
+  const ToDoTile({
     super.key,
     required this.taskName,
     required this.taskCompleted,
@@ -27,7 +27,10 @@ class ToDoTile extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Checkbox(value: taskCompleted, onChanged: onChanged),
+            Checkbox(
+              value: taskCompleted,
+              onChanged: onChanged,
+            ),
             Text(
               taskName,
               style: const TextStyle(color: Colors.white, fontSize: 20),

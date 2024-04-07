@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/models/todo.dart';
 import 'package:todo_app/widgets/todo_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,17 +11,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   // List of todo tasks
-  List todoList = [
-    ['Learn Flutter', false],
-    ['Do More Projects', false]
+  List<ToDo> todoList = [
+    ToDo(taskName: "Learn Flutter", taskCompleted: false),
+    ToDo(taskName: 'Do More Flutter Coding', taskCompleted: false)
   ];
 
   // checkbox was tapped
-  void checkBoxChanged() {}
+  void checkBoxChanged(bool? value, int index) {
+    setState(() {
+      todoList[index].taskCompleted = !todoList[index].taskCompleted;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    print(todoList);
     return Scaffold(
       backgroundColor: Colors.teal[200],
       appBar: AppBar(
@@ -36,9 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: todoList.length,
         itemBuilder: (context, index) {
           return ToDoTile(
-            taskName: todoList[index][0],
-            taskCompleted: todoList[index][1],
-            onChanged: (value) => checkBoxChanged,
+            taskName: todoList[index].taskName,
+            taskCompleted: todoList[index].taskCompleted,
+            onChanged: (value) => checkBoxChanged(value, index),
           );
         },
       ),
