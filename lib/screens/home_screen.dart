@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/todo.dart';
+import 'package:todo_app/widgets/dialog_box.dart';
 import 'package:todo_app/widgets/todo_tile.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -10,6 +11,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // constroller
+  final _controller = TextEditingController();
+
   // List of todo tasks
   List<ToDo> todoList = [
     ToDo(taskName: "Learn Flutter", taskCompleted: false),
@@ -28,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog();
+        return DialogBox(controller: _controller);
       },
     );
   }
