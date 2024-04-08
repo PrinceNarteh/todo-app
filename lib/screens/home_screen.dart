@@ -49,6 +49,8 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  // delete 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
             taskName: todoList[index].taskName,
             taskCompleted: todoList[index].taskCompleted,
             onChanged: (value) => checkBoxChanged(value, index),
+            deleteFunction: (context) {},
           );
         },
       ),
