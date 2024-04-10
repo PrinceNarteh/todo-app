@@ -49,7 +49,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // delete 
+  // delete a task
+  void deleteTask(BuildContext context, int index) {
+    setState(() {
+      // todoList.
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
             taskName: todoList[index].taskName,
             taskCompleted: todoList[index].taskCompleted,
             onChanged: (value) => checkBoxChanged(value, index),
-            deleteFunction: (context) {},
+            deleteFunction: (context) => deleteTask(context, index),
           );
         },
       ),
